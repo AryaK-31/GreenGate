@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&display=swap');
+
+//Responsive Design Media Breakpoints
+$bp-med-laptop-1 : 75em; //1200px
+$bp-med-laptop-2 : 64em; //1200px
+$bp-tab : 56.25em; //900px
+$bp-mobile : 37.5em; //600px
+$bp-mobile-sm : 31.25em; //500px
+
+//Font sizes
+$font-size-primary : 5rem;
+$font-size-secondary : 1.8rem;
+$font-size-tertiary : 1.6rem;
+$font-size-card : 1.2rem;
+
+//Light Mode Theme Variables
+$color-primary : rgb(242, 240, 240);
+$color-secondary : rgb(46, 159, 12);
+
+$color-text-primary : rgb(63, 193, 23);
+$color-text-primary-dark : rgb(40, 137, 10);
+$color-text-primary-light : rgb(205, 243, 194);
+
+//Dark Mode Theme Variables
+$color-primary : rgb(242, 240, 240);
+$color-secondary : rgb(46, 159, 12);
+
+$color-text-primary : rgb(63, 193, 23);
+$color-text-primary-dark : rgb(40, 137, 10);
+$color-text-primary-light : rgb(205, 243, 194);
+
+@mixin centralize {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin button($col-1, $col-2, $col-3) {
+    font-size: $font-size-tertiary;
+    align-self: flex-start;
+    padding: 1.2rem 2.6rem;
+    border: none;
+    background-color: $col-1;
+    color: $col-2;
+    border-radius: 40px;
+    cursor: pointer;
+    border: 2px solid $col-3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    box-sizing: inherit;
+    font-size: 62.5%; //1rem = 10px, 10px/16px = 62.5%
+    font-family: "Chocolate Classical Sans", sans-serif;
+
+}
+
+.hero-content {
+    height: 80vh;
+    width: 100%;
+    background-color: $color-primary;
+    display: flex;
+    overflow: hidden;
+
+    .hero-content-text {
+        flex: 0 0 55%;
+        display: flex;
+        padding: 10rem;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3rem;
+
+
+        h1,
+        h2 {
+            font-size: $font-size-primary;
+            letter-spacing: 1.5px;
+            color: $color-text-primary;
+        }
+
+        h2 {
+            color: black;
+        }
+
+        p {
+            font-size: $font-size-secondary;
+            font-weight: 600;
+            max-width: 50%;
+        }
+
+        .hero-btn {
+            @include button(black, white, black)
+        }
+
+        ul {
+            font-size: $font-size-tertiary;
+            list-style: none;
+        }
+    }
+
+    .hero-content-visuals {
+        clip-path: polygon(0 16%, 100% 0, 100% 100%, 0 84%);
+        flex: 1 0 0;
+        align-self: stretch;
+        position: relative;
+        transition: all 0.2s ease-in;
+        z-index: 500;
+
+        .hero-content-video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &:hover {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            transform: scale(1.2);
+        }
+    }
+}
+
+.navbar-container {
+    position: fixed;
+    top: 2.8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 45%;
+    box-shadow: 5px 5px 16px rgb(105, 104, 104);
+    border-radius: 60px;
+    padding: 8px 16px;
+    z-index: 1000;
+    color: $color-text-primary-dark;
+    transition: all 0.2s ease-in;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        color: $color-text-primary-dark;
+        cursor: pointer;
+    }
+
+    .navbar-items {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2rem;
+
+        li {
+            font-size: 1.4rem;
+            margin-left: 2px;
+            padding: 4px 8px;
+            transition: all 0.2s ease-in;
+            cursor: pointer;
+
+            &:hover, .active {
+                background-color: $color-text-primary-dark;
+                color: white;
+                border-radius: 30px;
+                padding: 4px 8px;
+            }
+        }
+    }
+
+    .switch {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+}
+
+.process-container {
+    height: 150vh;
+    width: 100%;
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding-top: 6rem;
+
+        h3 {
+            font-size: $font-size-secondary;
+        }
+
+        h2 {
+            font-size: $font-size-primary;
+        }
+
+        p {
+            font-size: $font-size-tertiary;
+            max-width: 40%;
+            text-align: center;
+        }
+    }
+}
+
+.about-container {
+    height: 55vh;
+    width: 100%;
+    display: flex;
+
+
+    &__visuals {
+        flex: 0 0 50%;
+
+        .video {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.4rem;
+        background-color: $color-secondary;
+        padding: 2.4rem;
+
+        h3 {
+            font-size: $font-size-secondary;
+            color: white;
+            align-self: flex-start;
+        }
+
+        h2 {
+            font-size: $font-size-primary;
+        }
+
+        p {
+            font-size: $font-size-tertiary;
+            color: white;
+            max-width: 50%;
+        }
+
+        .about-btn {
+            @include button(white, black, white)
+        }
+    }
+}
+
+.products-container {
+    height: auto;
+    width: auto;
+    padding: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+
+
+        h3 {
+            font-size: $font-size-secondary;
+        }
+
+        h2 {
+            font-size: $font-size-primary;
+        }
+
+        p {
+            font-size: $font-size-tertiary;
+            max-width: 40%;
+        }
+    }
+
+    &__cards {
+        height: 100%;
+        padding: 2rem;
+        display: flex;
+        gap: 4rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+
+        /* Scrollbar customization for WebKit-based browsers */
+        ::-webkit-scrollbar {
+            height: 6px;
+            /* Height of horizontal scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            /* Track color */
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            /* Thumb color */
+            border-radius: 16px;
+            border: 3px solid #f0f0f0;
+            /* Thumb border color */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+            /* Thumb color on hover */
+        }
+
+        /* Scrollbar customization for Firefox */
+        scrollbar-color: $color-secondary #f0f0f0;
+        /* Thumb and track colors */
+        scrollbar-width: thin;
+
+    }
+
+
+    &__neumorphism {
+        margin: auto;
+        margin-top: 6rem;
+        height: 80vh;
+        width: 85%;
+        border-radius: 3.5rem;
+        background: #87df94;
+        box-shadow: 20px 20px 20px #6a9f72, -10px -10px 40px #828482;
+        position: relative;
+
+        .neumorphism-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 3rem;
+
+            h2 {
+                font-size: $font-size-primary;
+            }
+
+            p {
+                font-size: $font-size-tertiary;
+
+            }
+
+            h3 {
+                font-size: $font-size-secondary;
+            }
+
+            .neumorphism-buttons {
+                display: flex;
+                gap: 2rem;
+
+                .btn-dark {
+                    @include button(green, white, green)
+                }
+
+                .btn-light {
+                    @include button(rgb(255, 255, 255), rgb(0, 0, 0), rgb(33, 177, 33))
+                }
+            }
+        }
+
+        .report {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            height: 60%;
+            width: 100%;
+            width: auto;
+            transform: translate(-50%, 0);
+            box-shadow: -10px -10px 30px rgba(6, 6, 6, 0.31), 10px -10px 30px rgba(6, 6, 6, 0.406);
+
+            img {
+                object-fit: cover;
+                object-position: center;
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    .quote {
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        h2 {
+            font-size: $font-size-primary;
+            max-width: 80%;
+            text-align: center;
+
+            span {
+                color: $color-text-primary;
+            }
+        }
+
+        h3 {
+            font-size: 3rem;
+        }
+    }
+
+
+}
+
+.productCard-container {
+    height: 42vh;
+    width: 32vh;
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 2px 2px 30px rgb(255, 255, 255);
+    flex: 0 0 auto;
+    background-color: white;
+
+
+    &__image {
+        height: 88%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__text {
+        padding: 0.8rem;
+        height: 12%;
+        color: white;
+        background-color: rgb(116, 4, 4);
+        font-size: $font-size-card;
+    }
+}
+
+.contact-container{
+    height: 80vh;
+    width: 100%;
+
+    display: flex;
+
+    &__image{
+        height: 100%;
+        width: 50%;
+        
+        img{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+    }
+
+    &__text{
+        padding: 1.5rem;
+        height: 100%;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        background-color: $color-primary;
+
+        .text-info{
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            h3{
+                font-size: $font-size-primary;
+            }
+            p{
+                font-size: $font-size-tertiary;
+                max-width: 45%;
+            }
+        }
+
+        .contact-form{
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            gap: 2rem;
+            height: 100%;
+            input{
+                padding: 1.5rem;
+                height: 3.5rem;
+                width: 90%;
+                border-radius: 6rem;
+                border: 1px solid black;
+                font-size: $font-size-tertiary;
+            }
+            textarea{
+                padding: 1.5rem;
+                border-radius: 2rem;
+                width: 90%;
+                font-size: $font-size-tertiary;
+            }
+
+            button{
+                padding: 1.5rem;
+                height: 3.5rem;
+                width: 90%;
+                border-radius: 6rem;
+                border: 1px solid black;
+                font-size: $font-size-tertiary;
+                text-align: center;
+
+            }
+        
+        }
+    }
+}
